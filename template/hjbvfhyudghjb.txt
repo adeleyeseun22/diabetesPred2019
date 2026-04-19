@@ -1,0 +1,67 @@
+    <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "sautul_haqq";
+
+                //Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+                $sql = "SELECT  concat(teacher_table.firstName, ' ' ,teacher_table.middleName, ' ' ,teacher_table.lastName) as Name,subjectCode,subjectName,classCode,subject_table.status from subject_table join teacher_table on subject_table.teacherID=teacher_table.employeeNumber";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                ?>
+                            <table id="table" class="table table-striped table-hover card-text"> 
+                                    <thead>
+                                        <tr>
+                                        <th>Subject Code</th>
+                                        <th>Subject Name</th>
+                                        <th>Class Teacher</th>
+                                        <th>Class</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        </tr>
+                                     </thead>
+                <?php	
+                        
+                    while($row = mysqli_fetch_assoc($result)) {
+                        
+                        echo " <tr>
+                                <td>" . $row["subjectCode"]. " </td>
+                                <td>" . $row["subjectName"]. " </td>
+                                <td>" . $row["Name"]. " </td>
+                                <td>" . $row["classCode"]. " </td>
+                                <td>" . $row["status"]. "</td>".
+                                '<td><button id="editButton" class="btn btn-primary">Edit</button>
+                                </td>'.
+                               "</tr>";
+                    }
+                ?>
+                </table>
+                <?php
+                } else {  
+                    echo "0 results";
+                }
+                ?>
+
+<td>" . $row["patient_id"]. " </td>
+                                <td>" . $row["FirstName"]. " </td>
+                                <td>" . $row["LastName"]. " </td>
+                                <td>" . $row["DOB"]. " </td>
+                                <td>" . $row["Age"]. " </td>
+                                <td>" . $row["Bmi"]. " </td>
+                                <td>" . $row["FastingGlucose"]. " </td>
+                                <td>" . $row["2HrsGlucose"]. " </td>
+                                <td>" . $row["RandomGlucose"]. " </td>
+                                <td>" . $row["Insulinfasting"]. " </td>
+                                <td>" . $row["Insulin2Hrs"]. " </td>
+                                <td>" . $row["InsulinRandom"]. " </td>
+                                <td>" . $row["BloodPressure"]. " </td>
+                                
+                                <td>" . $row["DPF"]. "</td>".

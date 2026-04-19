@@ -1,0 +1,8 @@
+Flask
+Flask-Bootstrap
+PyMySQL
+pandas
+numpy
+Flask-WTF
+WTForms
+scikit-learn
